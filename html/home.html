@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Legal Report System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #eef2f7, #f8fbff);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 400px;
+}
+
+h1 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+p {
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.button {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+.sale {
+    background: #2f80ed;
+}
+
+.sale:hover {
+    background: #1c60c7;
+}
+
+.gift {
+    background: #27ae60;
+}
+
+.gift:hover {
+    background: #1e874b;
+}
+
+.footer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #888;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Legal Report Generator</h1>
+<p>Select report type</p>
+
+<a href="/sale" class="button sale">Sale Deed Report</a>
+<a href="/gift" class="button gift">Gift Deed Report</a>
+
+<div class="footer">
+System Ready • Offline / Local Mode
+</div>
+
+</div>
+
+</body>
+</html>
