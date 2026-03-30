@@ -1,129 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Legal Scrutiny Report - Sale</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legal Scrutiny Report</title>
 
 <style>
 body {
     font-family: "Segoe UI", Arial;
-    background: linear-gradient(135deg, #eef2f7, #f8fbff);
+    background: #eef2f7;
     margin: 0;
 }
 
-.header {
-    background: #2f80ed;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
+.container {
+    max-width: 1150px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
 }
 
-.container {
-    max-width: 1100px;
-    margin: 20px auto;
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
+h1 {
+    text-align: center;
 }
 
 .section {
     margin-bottom: 25px;
 }
 
-.section h2 {
-    border-left: 4px solid #2f80ed;
-    padding-left: 10px;
-    margin-bottom: 15px;
+.section h3 {
+    background: #34495e;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
-    gap: 12px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 10px;
 }
 
-.field label {
-    font-size: 13px;
-    color: #444;
-}
-
-.field input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 4px;
+input {
+    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 6px;
-}
-
-.sticky-submit {
-    position: sticky;
-    bottom: 0;
-    background: white;
-    padding: 15px;
-    border-top: 1px solid #ddd;
+    width: 100%;
 }
 
 button {
     width: 100%;
-    padding: 14px;
-    background: #2f80ed;
+    padding: 12px;
+    background: #2ecc71;
     color: white;
     border: none;
-    border-radius: 8px;
     font-size: 16px;
+    border-radius: 6px;
     cursor: pointer;
 }
 
 button:hover {
-    background: #1c60c7;
+    background: #27ae60;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">Legal Scrutiny Report Generator (Sale)</div>
-
 <div class="container">
-<form method="POST" action="/generate_sale">
+
+<h1>LEGAL SCRUTINY REPORT</h1>
+
+<form action="/generate" method="post">
 
 <!-- BASIC -->
 <div class="section">
-<h2>Basic Details</h2>
+<h3>Basic Details</h3>
 <div class="grid">
-<div class="field"><label>Date</label><input name="DATE" placeholder="DD/MM/YYYY"></div>
-<div class="field"><label>Application No</label><input name="APPLICATION_NO"></div>
-<div class="field"><label>Applicant Name</label><input name="APPLICANT_NAME"></div>
-<div class="field"><label>Loan Amount</label><input name="LOAN_AMOUNT"></div>
-<div class="field"><label>Owner Name</label><input name="APPLICANT_BOLD_OWNER"></div>
+<input name="APPLICATION_NO" placeholder="Application No">
+<input type="date" name="DATE">
+<input name="APPLICANT_NAME" placeholder="Applicant Name">
+<input name="LOAN_AMOUNT" placeholder="Loan Amount">
+<input name="APPLICANT_BOLD_OWNER" placeholder="Owner Name">
 </div>
 </div>
 
 <!-- PROPERTY -->
 <div class="section">
-<h2>Property Details</h2>
+<h3>Property Details</h3>
 <div class="grid">
+<input name="DEED_NO" placeholder="Deed No">
+<input type="date" name="DEED_DATE">
 <input name="DOOR_NO" placeholder="Door No">
-<input name="PLOT_NO" placeholder="Plot No">
-<input name="ASSESSMENT_NO" placeholder="Assessment No">
-<input name="EXTENT_YARDS" placeholder="Extent (Sq Yards)">
+
+<input name="ASSESSMENT_NO" placeholder="Assessment No (UPPER)">
+<input name="Assessment_No" placeholder="Assessment No (LOWER - IMPORTANT)">
+
 <input name="SURVEY_NO" placeholder="Survey No">
-<input name="ADDRESS" placeholder="Full Address">
+<input name="PLOT_NO" placeholder="Plot No">
+<input name="EXTENT_YARDS" placeholder="Extent Sq.Yards">
+<input name="EXTENT_FEET" placeholder="Extent Sq.Feet">
+</div>
+</div>
+
+<!-- LOCATION -->
+<div class="section">
+<h3>Location Details</h3>
+<div class="grid">
+<input name="ADDRESS" placeholder="Address">
 <input name="VILLAGE" placeholder="Village">
 <input name="GRAM_PANCHAYAT" placeholder="Gram Panchayat">
 <input name="MANDAL" placeholder="Mandal">
+<input name="DISTRICT" placeholder="District">
 <input name="SRO" placeholder="SRO">
 <input name="RO" placeholder="RO">
-<input name="DISTRICT" placeholder="District">
 </div>
 </div>
 
 <!-- BOUNDARIES -->
 <div class="section">
-<h2>Boundaries</h2>
+<h3>Boundaries</h3>
 <div class="grid">
 <input name="EAST_BOUNDARY" placeholder="East Boundary">
 <input name="WEST_BOUNDARY" placeholder="West Boundary">
@@ -134,25 +130,22 @@ button:hover {
 
 <!-- MEASUREMENTS -->
 <div class="section">
-<h2>Measurements</h2>
+<h3>Measurements</h3>
 <div class="grid">
-<input name="E_W" placeholder="E-W (yards)">
-<input name="N_S" placeholder="N-S (yards)">
-<input name="E_W_FEET" placeholder="E-W Feet">
-<input name="N_S_FEET" placeholder="N-S Feet">
-<input name="EXTENT_FEET" placeholder="Total Sq Ft">
+<input name="E_W" placeholder="E-W (Yards)">
+<input name="N_S" placeholder="N-S (Yards)">
+<input name="E_W_FEET" placeholder="E-W (Feet)">
+<input name="N_S_FEET" placeholder="N-S (Feet)">
 </div>
 </div>
 
-<!-- DEED -->
+<!-- DOCUMENT DETAILS -->
 <div class="section">
-<h2>Deed & Ownership</h2>
+<h3>Document Details</h3>
 <div class="grid">
-<input name="DEED_TYPE" placeholder="Sale/Gift">
-<input name="DEED_NO" placeholder="Deed No">
-<input name="DEED_DATE" placeholder="Deed Date">
 <input name="EXECUTANT_FULL" placeholder="Executant Name">
 <input name="APPLICANT_OWNER_FULL" placeholder="Applicant Owner Full">
+<input name="APPLICANT_FULL" placeholder="Applicant Full Name">
 <input name="RELATION" placeholder="Relation">
 <input name="WORTH" placeholder="Property Worth">
 </div>
@@ -160,34 +153,34 @@ button:hover {
 
 <!-- POSSESSION -->
 <div class="section">
-<h2>Possession & Tax</h2>
+<h3>Possession & Tax</h3>
 <div class="grid">
-<input name="POSSESSION_DATE" placeholder="Possession Date">
+<input type="date" name="POSSESSION_DATE">
 <input name="FROM_YEARS" placeholder="From Years">
 <input name="POSSESSION_NAME" placeholder="Possession Name">
-<input name="H_T_DATE" placeholder="House Tax Date">
-<input name="HOUSE_TAX_RECIPT_NO" placeholder="Receipt No">
+
+<input type="date" name="H_T_DATE">
+<input name="HOUSE_TAX_RECIPT_NO" placeholder="House Tax Receipt No">
 <input name="FINANCIAL_YEARS" placeholder="Financial Years">
-<input name="HOUSE_TAX_NAME" placeholder="Tax Name">
+
+<input name="HOUSE_TAX_NAME" placeholder="House Tax Name">
 <input name="HOUSE_TAX_ISSUED_BY" placeholder="Issued By">
 </div>
 </div>
 
 <!-- EC -->
 <div class="section">
-<h2>Encumbrance</h2>
+<h3>Encumbrance Certificate</h3>
 <div class="grid">
-<input name="EC_DATE" placeholder="EC Date">
-<input name="EC_NO" placeholder="EC No">
+<input type="date" name="EC_DATE">
+<input name="EC_NO" placeholder="EC Number">
 </div>
 </div>
 
-<!-- SUBMIT -->
-<div class="sticky-submit">
-<button type="submit">Generate Legal Report</button>
-</div>
+<button type="submit">Generate Report</button>
 
 </form>
+
 </div>
 
 </body>
