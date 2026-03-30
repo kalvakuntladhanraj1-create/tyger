@@ -1,153 +1,187 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Legal Scrutiny Report Generator</title>
+<meta charset="UTF-8">
+<title>Legal Scrutiny Report</title>
+
+<style>
+body {
+    font-family: "Segoe UI", Arial;
+    background: #f4f7fb;
+    margin: 0;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section {
+    margin-bottom: 25px;
+}
+
+.section h3 {
+    background: #2c3e50;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 10px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #27ae60;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #219150;
+}
+</style>
 </head>
+
 <body>
 
-<h2>LEGAL SCRUTINY REPORT FORM</h2>
+<div class="container">
+
+<h1>LEGAL SCRUTINY REPORT</h1>
 
 <form action="/generate" method="post">
 
-<!-- BASIC DETAILS -->
-<label>Application No:</label>
-<input type="text" name="APPLICATION_NO"><br><br>
+<!-- BASIC -->
+<div class="section">
+<h3>Basic Details</h3>
+<div class="grid">
+<input name="APPLICATION_NO" placeholder="Application No">
+<input type="date" name="DATE">
+<input name="APPLICANT_NAME" placeholder="Applicant Name">
+<input name="LOAN_AMOUNT" placeholder="Loan Amount">
+<input name="APPLICANT_BOLD_OWNER" placeholder="Owner Name">
+</div>
+</div>
 
-<label>Date:</label>
-<input type="date" name="DATE"><br><br>
+<!-- PROPERTY -->
+<div class="section">
+<h3>Property Details</h3>
+<div class="grid">
+<input name="DEED_NO" placeholder="Deed No">
+<input type="date" name="DEED_DATE">
+<input name="DEED_TYPE" placeholder="Deed Type">
+<input name="DOOR_NO" placeholder="Door No">
+<input name="ASSESSMENT_NO" placeholder="Assessment No">
+<input name="SURVEY_NO" placeholder="Survey No">
+<input name="PLOT_NO" placeholder="Plot No">
+<input name="EXTENT_YARDS" placeholder="Extent (Sq Yards)">
+<input name="EXTENT_FEET" placeholder="Extent (Sq Feet)">
+</div>
+</div>
 
-<label>Applicant Name:</label>
-<input type="text" name="APPLICANT_NAME"><br><br>
-
-<label>Loan Amount:</label>
-<input type="text" name="LOAN_AMOUNT"><br><br>
-
-<label>Owner Name:</label>
-<input type="text" name="APPLICANT_BOLD_OWNER"><br><br>
-
-<!-- PROPERTY DETAILS -->
-<label>Deed No:</label>
-<input type="text" name="DEED_NO"><br><br>
-
-<label>Deed Date:</label>
-<input type="date" name="DEED_DATE"><br><br>
-
-<label>Door No:</label>
-<input type="text" name="DOOR_NO"><br><br>
-
-<label>Assessment No:</label>
-<input type="text" name="ASSESSMENT_NO"><br><br>
-
-<label>Extent (Yards):</label>
-<input type="text" name="EXTENT_YARDS"><br><br>
-
-<label>Survey No:</label>
-<input type="text" name="SURVEY_NO"><br><br>
-
-<label>Plot No:</label>
-<input type="text" name="PLOT_NO"><br><br>
-
-<label>Address:</label>
-<input type="text" name="ADDRESS"><br><br>
-
-<label>Village:</label>
-<input type="text" name="VILLAGE"><br><br>
-
-<label>Gram Panchayat:</label>
-<input type="text" name="GRAM_PANCHAYAT"><br><br>
-
-<label>Mandal:</label>
-<input type="text" name="MANDAL"><br><br>
-
-<label>SRO:</label>
-<input type="text" name="SRO"><br><br>
-
-<label>RO:</label>
-<input type="text" name="RO"><br><br>
-
-<label>District:</label>
-<input type="text" name="DISTRICT"><br><br>
+<!-- LOCATION -->
+<div class="section">
+<h3>Location Details</h3>
+<div class="grid">
+<input name="ADDRESS" placeholder="Address">
+<input name="VILLAGE" placeholder="Village">
+<input name="GRAM_PANCHAYAT" placeholder="Gram Panchayat">
+<input name="MANDAL" placeholder="Mandal">
+<input name="DISTRICT" placeholder="District">
+<input name="SRO" placeholder="SRO">
+<input name="RO" placeholder="RO">
+</div>
+</div>
 
 <!-- BOUNDARIES -->
-<label>East Boundary:</label>
-<input type="text" name="EAST_BOUNDARY"><br><br>
-
-<label>West Boundary:</label>
-<input type="text" name="WEST_BOUNDARY"><br><br>
-
-<label>North Boundary:</label>
-<input type="text" name="NORTH_BOUNDARY"><br><br>
-
-<label>South Boundary:</label>
-<input type="text" name="SOUTH_BOUNDARY"><br><br>
+<div class="section">
+<h3>Boundaries</h3>
+<div class="grid">
+<input name="EAST_BOUNDARY" placeholder="East Boundary">
+<input name="WEST_BOUNDARY" placeholder="West Boundary">
+<input name="NORTH_BOUNDARY" placeholder="North Boundary">
+<input name="SOUTH_BOUNDARY" placeholder="South Boundary">
+</div>
+</div>
 
 <!-- MEASUREMENTS -->
-<label>E-W:</label>
-<input type="text" name="E_W"><br><br>
-
-<label>N-S:</label>
-<input type="text" name="N_S"><br><br>
-
-<label>E-W (Feet):</label>
-<input type="text" name="E_W_FEET"><br><br>
-
-<label>N-S (Feet):</label>
-<input type="text" name="N_S_FEET"><br><br>
-
-<label>Total Extent (Feet):</label>
-<input type="text" name="EXTENT_FEET"><br><br>
+<div class="section">
+<h3>Measurements</h3>
+<div class="grid">
+<input name="E_W" placeholder="E-W (Yards)">
+<input name="N_S" placeholder="N-S (Yards)">
+<input name="E_W_FEET" placeholder="E-W (Feet)">
+<input name="N_S_FEET" placeholder="N-S (Feet)">
+</div>
+</div>
 
 <!-- DOCUMENT DETAILS -->
-<label>Deed Type:</label>
-<input type="text" name="DEED_TYPE"><br><br>
+<div class="section">
+<h3>Document Details</h3>
+<div class="grid">
+<input name="EXECUTANT_FULL" placeholder="Executant Name">
+<input name="APPLICANT_OWNER_FULL" placeholder="Applicant Owner Full">
+<input name="RELATION" placeholder="Relation">
+<input name="WORTH" placeholder="Property Worth">
+</div>
+</div>
 
-<label>Executant Full Name:</label>
-<input type="text" name="EXECUTANT_FULL"><br><br>
+<!-- POSSESSION -->
+<div class="section">
+<h3>Possession & Tax</h3>
+<div class="grid">
+<input type="date" name="POSSESSION_DATE">
+<input name="FROM_YEARS" placeholder="From Years">
+<input name="POSSESSION_NAME" placeholder="Possession Name">
+<input type="date" name="H_T_DATE">
+<input name="HOUSE_TAX_RECIPT_NO" placeholder="House Tax Receipt No">
+<input name="FINANCIAL_YEARS" placeholder="Financial Years">
+<input name="HOUSE_TAX_NAME" placeholder="House Tax Name">
+<input name="HOUSE_TAX_ISSUED_BY" placeholder="Issued By">
+</div>
+</div>
 
-<label>Applicant Owner Full:</label>
-<input type="text" name="APPLICANT_OWNER_FULL"><br><br>
+<!-- EC -->
+<div class="section">
+<h3>Encumbrance Certificate</h3>
+<div class="grid">
+<input type="date" name="EC_DATE">
+<input name="EC_NO" placeholder="EC Number">
+</div>
+</div>
 
-<label>Possession Date:</label>
-<input type="date" name="POSSESSION_DATE"><br><br>
-
-<label>From Years:</label>
-<input type="text" name="FROM_YEARS"><br><br>
-
-<label>Possession Name:</label>
-<input type="text" name="POSSESSION_NAME"><br><br>
-
-<label>House Tax Date:</label>
-<input type="date" name="H_T_DATE"><br><br>
-
-<label>House Tax Receipt No:</label>
-<input type="text" name="HOUSE_TAX_RECIPT_NO"><br><br>
-
-<label>Financial Years:</label>
-<input type="text" name="FINANCIAL_YEARS"><br><br>
-
-<label>House Tax Name:</label>
-<input type="text" name="HOUSE_TAX_NAME"><br><br>
-
-<label>House Tax Issued By:</label>
-<input type="text" name="HOUSE_TAX_ISSUED_BY"><br><br>
-
-<label>EC Date:</label>
-<input type="date" name="EC_DATE"><br><br>
-
-<label>EC No:</label>
-<input type="text" name="EC_NO"><br><br>
-
-<label>Relation:</label>
-<input type="text" name="RELATION"><br><br>
-
-<label>Worth:</label>
-<input type="text" name="WORTH"><br><br>
-
-<!-- SUBMIT -->
-<button type="submit">Generate Document</button>
+<button type="submit">Generate Report</button>
 
 </form>
+
+</div>
 
 </body>
 </html>
