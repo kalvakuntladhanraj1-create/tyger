@@ -10,6 +10,14 @@ OUTPUT_DIR = os.path.join(BASE_DIR, "generated")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 
+# 🔥 ADDED: Date formatter
+def format_date(date_str):
+    try:
+        return datetime.strptime(date_str, "%Y-%m-%d").strftime("%d-%m-%Y")
+    except:
+        return date_str
+
+
 # ================= HOME =================
 @app.route("/")
 def home():
@@ -34,6 +42,19 @@ def generate_document(doc_type):
         print(f"\n🔥 ROUTE HIT: {doc_type.upper()}")
 
         data = request.form.to_dict()
+
+        # 🔥 ADDED: Convert date format (YYYY-MM-DD → DD-MM-YYYY)
+        date_fields = [
+            "DATE",
+            "DEED_DATE",
+            "POSSESSION_DATE",
+            "H_T_DATE",
+            "EC_DATE"
+        ]
+
+        for field in date_fields:
+            if field in data and data[field]:
+                data[field] = format_date(data[field])
 
         # 🔥 Fix placeholder mismatch automatically
         if "ASSESSMENT_NO" in data:
